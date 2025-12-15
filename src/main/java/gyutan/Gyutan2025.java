@@ -1,7 +1,6 @@
 package gyutan;
 
 import java.io.IOException;
-import java.util.Objects;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,27 +23,31 @@ public class Gyutan2025 extends HttpServlet {
 		response.getWriter().println("doGet method.");
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 受取ったパラメータの文字エンコードをUTF-8にする
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 送られてきたデータを取得
 		request.setCharacterEncoding("UTF-8");
-
-		// パラメータを取得する
 		String param = request.getParameter("param");
-		// パラメータがnullなら、変数paramを""にする
-		if(Objects.isNull(param)) {
-			param="";
-		}
 
 		// paramを送ってCLUからデータを取得する
 		String detected = GetClu.getLanguageText(param);
 
-		
 		// 結果（スキーム）をコンソールとWebブラウザにひょうじ
 		System.out.println(detected);
-		response.getWriter().println(detected);
-		
-		
-	
+
+		// CLUの応答に基づいてページを転送する
+		if ("店舗紹介".equals(detected) || "ABOUT".equals(detected)) {
+			request.getRequestDispatcher("store_introduction.html").forward(request, response);
+		} else if ("店舗メニュー".equals(detected) || "MENU".equals(detected)) {
+			request.getRequestDispatcher("store_menu.html").forward(request, response);
+		} else if ("通販".equals(detected) || "SHOP".equals(detected)) {
+			request.getRequestDispatcher("mail_order.html").forward(request, response);
+		} else if ("歴史".equals(detected) || "HISTORY".equals(detected)) {
+			request.getRequestDispatcher("history.html").forward(request, response);
+		} else {
+			// デフォルトの応答
+			response.getWriter().println(detected);
+		}
 	}
 
 }

@@ -1,26 +1,42 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-	<meta charset="UTF-8">
-	<title>Top Page</title>
+    <meta charset="UTF-8">
+    <title>牛タン○○ トップページ</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-	<header>
-		<h1>牛タン○○のページ</h1>
-	</header>
-	<main>
-		<form method="post" action="tan">
-			<div class="question">
-				<p>質問を入力してください</p>
-				<p><input type="text" name="param"></p>
-			</div>
-			<div class="submit">
-				<button type="submit">送信</button>
-			</div>
-		</form>
-	</main>
-</body>
+    <header>
+        <h1>牛タン○○</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="store_introduction.html">店舗紹介</a></li>
+            <li><a href="store_menu.html">店舗メニュー</a></li>
+            <li><a href="mail_order.html">通販</a></li>
+            <li><a href="history.html">歴史</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="welcome-section">
+            <h2>ようこそ、牛タン○○へ</h2>
+            <p>
+                本場仙台の伝統を受け継ぐ、こだわりの牛タン焼き専門店です。<br>
+                職人が一枚一枚丁寧に焼き上げた、外はカリッと、中はジューシーな牛タンをお楽しみください。
+            </p>
+        </div>
 
+        <div class="chatbot-section">
+            <h3>AIチャットボット</h3>
+            <p>ご予約やご質問はこちらからお気軽にどうぞ</p>
+            <form method="post" action="tan">
+                <input type="text" name="param" placeholder="例: 「明日の19時に2名で予約したい」「アレルギーについて」">
+                <button type="submit">送信</button>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 牛タン○○. All Rights Reserved.</p>
+    </footer>
+</body>
 </html>
